@@ -1,8 +1,8 @@
 ---
 name: unit-test
-description: 'Spring Boot 서비스 클래스에 대한 단위 테스트를 생성합니다'
+description: "Spring Boot 서비스 클래스에 대한 단위 테스트를 생성합니다"
 disable-model-invocation: true
-allowed-tools: ['Read', 'Write', 'Glob', 'Grep', 'Bash(./gradlew test:*)']
+allowed-tools: ["Read", "Write", "Glob", "Grep", "Bash(./gradlew test:*)"]
 ---
 
 # Unit Test 생성

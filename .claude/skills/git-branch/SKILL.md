@@ -1,17 +1,17 @@
 ---
 name: git-branch
-description: '브랜치 생성, 전환, 삭제 등 브랜치 관리 작업을 수행합니다'
+description: "브랜치 생성, 전환, 삭제 등 브랜치 관리 작업을 수행합니다"
 disable-model-invocation: true
 allowed-tools:
   [
-    'Bash(git branch:*)',
-    'Bash(git checkout:*)',
-    'Bash(git switch:*)',
-    'Bash(git status:*)',
-    'Bash(git stash:*)',
-    'Bash(git log:*)',
-    'Bash(git reflog:*)',
-    'Bash(git fetch:*)',
+    "Bash(git branch:*)",
+    "Bash(git checkout:*)",
+    "Bash(git switch:*)",
+    "Bash(git status:*)",
+    "Bash(git stash:*)",
+    "Bash(git log:*)",
+    "Bash(git reflog:*)",
+    "Bash(git fetch:*)",
   ]
 ---
 

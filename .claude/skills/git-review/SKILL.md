@@ -1,9 +1,9 @@
 ---
 name: git-review
-description: '이전 커밋부터 현재 커밋할 내용(staged + unstaged)까지의 변경사항을 코드 리뷰합니다'
+description: "이전 커밋부터 현재 커밋할 내용(staged + unstaged)까지의 변경사항을 코드 리뷰합니다"
 disable-model-invocation: true
 allowed-tools:
-  ['Bash(git diff:*)', 'Bash(git log:*)', 'Bash(git status:*)', 'Read', 'Grep']
+  ["Bash(git diff:*)", "Bash(git log:*)", "Bash(git status:*)", "Read", "Grep"]
 ---
 
 # Review

@@ -1,14 +1,14 @@
 ---
 name: git-commit
-description: '컨벤셔널 커밋 메시지로 잘 포맷된 커밋을 생성합니다'
+description: "컨벤셔널 커밋 메시지로 잘 포맷된 커밋을 생성합니다"
 disable-model-invocation: true
 allowed-tools:
   [
-    'Bash(git add:*)',
-    'Bash(git status:*)',
-    'Bash(git commit:*)',
-    'Bash(git diff:*)',
-    'Bash(git log:*)',
+    "Bash(git add:*)",
+    "Bash(git status:*)",
+    "Bash(git commit:*)",
+    "Bash(git diff:*)",
+    "Bash(git log:*)",
   ]
 ---
 
