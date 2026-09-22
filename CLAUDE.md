@@ -32,7 +32,7 @@ npm run lint    # ESLint (next/core-web-vitals + next/typescript)
 
 루트의 `proxy.ts`는 `middleware()`가 아니라 **`proxy()`**를 export한다 — 설치된 Next.js 16(`next@16.3.6`)에서 Middleware가 Proxy로 이름이 바뀌었다. `lib/supabase/proxy.ts`의 `updateSession()`을 호출해 매 요청마다 세션을 갱신하고, 비로그인 사용자를 `/auth/login`으로 리다이렉트한다.
 
-로그인 없이 접근 가능한 경로는 `lib/supabase/proxy.ts` 안에 **하드코딩된 허용 목록**으로 관리된다 (`/`, `/login*`, `/auth*`, `/instruments`, `/instruments/*`). 새 공개 라우트를 추가하면 이 목록도 같이 갱신해야 한다.
+로그인 없이 접근 가능한 경로는 `lib/supabase/proxy.ts` 안에 **하드코딩된 허용 목록**으로 관리된다 (`/`, `/login*`, `/auth*`). 새 공개 라우트를 추가하면 이 목록도 같이 갱신해야 한다.
 
 `lib/utils.ts`의 `hasEnvVars`가 false면(즉 Supabase 환경변수 미설정 시) `updateSession()`은 아무 것도 하지 않고 바로 통과시킨다 — 스타터 킷의 "설정 전 안내" 동작이다.
 
@@ -40,11 +40,10 @@ npm run lint    # ESLint (next/core-web-vitals + next/typescript)
 
 - `app/auth/*` — 로그인/회원가입/비밀번호 재설정 등 공개 인증 플로우
 - `app/protected/*` — `layout.tsx`가 상단 nav(로고·`AuthButton`)와 하단 footer(`ThemeSwitcher`)를 공통 렌더링. `page.tsx`는 서버 컴포넌트 안에서 `supabase.auth.getClaims()`로 세션을 확인하고 없으면 `redirect("/auth/login")` — proxy의 리다이렉트와 별개로 페이지 자체도 이중으로 인증을 확인하는 패턴
-- `app/instruments/page.tsx` — proxy 허용 목록에 예외로 등록된 예시 서버 컴포넌트 데이터 페칭 페이지 (`supabase.from("instruments").select()`)
 
 ### 타입 재생성 필요 (주의)
 
-`lib/supabase/database.types.ts`는 Supabase CLI(`generate_typescript_types`)로 자동 생성되며 파일 상단 주석대로 직접 수정하면 안 된다. 현재 이 파일에는 `profiles` 테이블만 정의돼 있고, `app/instruments/page.tsx`가 조회하는 `instruments` 테이블은 반영되어 있지 않다 — 스키마를 바꾸거나 새 테이블을 다루기 전에 `mcp__supabase__generate_typescript_types`(또는 `supabase gen types`)로 먼저 재생성할 것.
+`lib/supabase/database.types.ts`는 Supabase CLI(`generate_typescript_types`)로 자동 생성되며 파일 상단 주석대로 직접 수정하면 안 된다. 스키마를 바꾸거나 새 테이블을 추가하면 `mcp__supabase__generate_typescript_types`(또는 `supabase gen types`)로 먼저 재생성할 것.
 
 ### UI 구성
 
